@@ -1,0 +1,26 @@
+{
+  "name": "altschool_exam_2",
+  "version": "1.0.0",
+  "description": "An e-commerce based exam project. This is a server-side/client-side designed to initiate real time communication with a Restaurant Bot. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "Real-time communication",
+    "socket.io"
+  ],
+  "author": "Ayooluwa Adeleke",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
