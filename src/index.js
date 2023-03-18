@@ -32,12 +32,12 @@ const io = socket(server);
 // require('./config/socket')(io);
 // module.exports = { sessionMiddleware };
 
-const fastFoods = {
-  11: 'Fried Chicken',
-  12: 'Burger',
-  13: 'Pizza',
-  14: 'Hot Dog',
-  15: 'French Fries',
+const foodMenu = {
+  11: 'Shandong Dumplings',
+  12: 'Amala & Gbegiri',
+  13: "Xi'an",
+  14: 'Semo & Egusi',
+  15: 'Soybean Noodles',
 };
 
 const orderHistory = [];
@@ -113,8 +113,8 @@ io.on('connection', (socket) => {
       switch (message) {
         case '1':
           // Generate the list of items dynamically
-          const itemOptions = Object.keys(fastFoods)
-            .map((item) => `${item}. ${fastFoods[item]}`)
+          const itemOptions = Object.keys(foodMenu)
+            .map((item) => `${item}. ${foodMenu[item]}`)
             .join('\n');
           socket.emit(
             'bot-message',
@@ -203,13 +203,13 @@ io.on('connection', (socket) => {
         default:
           // Add the item to the current order
           const itemNumber = parseInt(message);
-          if (!isNaN(itemNumber) && fastFoods[itemNumber]) {
+          if (!isNaN(itemNumber) && foodMenu[itemNumber]) {
             socket.request.session[deviceId].currentOrder.push(
-              fastFoods[itemNumber]
+              foodMenu[itemNumber]
             );
             socket.emit(
               'bot-message',
-              `You have added ${fastFoods[itemNumber]} to your current order\n Add another order from the menu\n Type '97' to see your current order\n '98' to see order history\n '99' to checkout\n '0' to cancel your order`
+              `You have added ${foodMenu[itemNumber]} to your current order\n Add another order from the menu\n Type '97' to see your current order\n '98' to see order history\n '99' to checkout\n '0' to cancel your order`
             );
           } else {
             socket.emit(

@@ -1,6 +1,8 @@
-# Chinese/Locally made Restaurant Bot
+# Phoenix Yummy Restaurant Bot
 
-This bot essentially assists customers in making orders from a list of locally made and chinese items.
+Chinese/Locally made C Bot
+
+Th bot essentially assists customers interested in chinese and locally made Nigerian meals in making orders from a list of locally made and chinese items.
 The concept is basically centered on the fact that users can readily make orders whenever they so desire and have their orders met all at once.
 
 ---
