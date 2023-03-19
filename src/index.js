@@ -107,7 +107,7 @@ io.on('connection', (socket) => {
       socket.request.session[deviceId].userName = userName;
       socket.emit(
         'bot-message',
-        `Welcome to the Fast Food ChatBot, ${userName}!\n1. Place an order\n99. Checkout order\n98. Order history\n97. Current order\n0. Cancel order`
+        `Heyy ${userName}, I'm PolyMath-Coder... Welcome to the Phoenix Fast Food ChatBot !\n1. Place an order\n99. Checkout order\n98. Order history\n97. Current order\n0. Cancel order`
       );
     } else {
       switch (message) {

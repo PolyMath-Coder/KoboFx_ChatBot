@@ -16,3 +16,15 @@ The concept is basically centered on the fact that users can readily make orders
 - Run `npm install` to install needful dependencies.
 - update env with example.env
 - run `npm start` to kickstart application
+
+---
+
+- [Base URL for Live API](https://altschool-exam-2.onrender.com)
+
+## Contributor
+
+- Ayooluwa Adeleke
+
+## StudentID
+
+- ALT/SOE/022/1367
