@@ -31,13 +31,14 @@ const io = socket(server);
 
 // require('./config/socket')(io);
 // module.exports = { sessionMiddleware };
+// \n1. USD 🇺🇸 -->  ₦754.00
+//         \n2. USA 🇺🇸 --> ₦759.00 \n3. CAD 🇨🇦 --> ₦565.00 \n4. £, GBP 🇬🇧 --> ₦934.00.
 
-const foodMenu = {
-  11: 'Shandong Dumplings',
-  12: 'Amala & Gbegiri',
-  13: "Xi'an",
-  14: 'Semo & Egusi',
-  15: 'Soybean Noodles',
+const exchangeRates = {
+  1: 'USD 🇺🇸 -->  ₦754.00',
+  2: 'USA 🇺🇸 --> ₦759.00',
+  3: 'CAD 🇨🇦 --> ₦565.00',
+  4: 'GBP 🇬🇧 --> ₦934.00',
 };
 
 const orderHistory = [];
@@ -77,7 +78,10 @@ io.on('connection', (socket) => {
 
   // Ask for the user's name if not provided already
   if (!socket.request.session[deviceId].userName) {
-    socket.emit('bot-message', "Hello! What's your name?");
+    socket.emit(
+      'bot-message',
+      "Hello There! I'm Brian, a KoboFx-Bot, May I know your first name?"
+    );
   } else {
     socket.emit(
       'bot-message',
@@ -107,36 +111,37 @@ io.on('connection', (socket) => {
       socket.request.session[deviceId].userName = userName;
       socket.emit(
         'bot-message',
-        `Heyy ${userName}, I'm PolyMath-Coder... Welcome to the Phoenix Fast Food ChatBot !\n1. Place an order\n99. Checkout order\n98. Order history\n97. Current order\n0. Cancel order`
+        `Heyy ${userName}, I'm delighted to have you here... Welcome to KoboFxBot Median Rate! Do input the '1' button to explore the available median street buy rate as of June 14, 2023 at 12:03pm.`
       );
     } else {
       switch (message) {
+        // case '1':
+        //   // Generate the list of items dynamically
+        //   const itemOptions = Object.keys(exchangeRates)
+        //     .map((item) => `${item}. ${foodMenu[item]}`)
+        //     .join('\n');
+        //   socket.emit(
+        //     'bot-message',
+        //     `The menu items are:\n${itemOptions}\nType the item number to add to your order`
+        //   );
+        //   break;
         case '1':
-          // Generate the list of items dynamically
-          const itemOptions = Object.keys(foodMenu)
-            .map((item) => `${item}. ${foodMenu[item]}`)
-            .join('\n');
+          // Show the user their current order
+          // if (socket.request.session[deviceId].currentOrder.length > 0) {
+          //   const currentOrder = socket.request.session[
+          //     deviceId
+          //   ].currentOrder.join(', ');
           socket.emit(
             'bot-message',
-            `The menu items are:\n${itemOptions}\nType the item number to add to your order`
+            '\n1. USD 🇺🇸 -->  ₦754.00 \n2. USA 🇺🇸 --> ₦759.00 \n3. CAD 🇨🇦 --> ₦565.00 \n4. £, GBP 🇬🇧 --> ₦934.00.'
+            //   `Your current order: ${currentOrder}\n1. Place an order\n99. Checkout order\n98. Order history\n97. Current order\n0. Cancel order`
           );
-          break;
-        case '97':
-          // Show the user their current order
-          if (socket.request.session[deviceId].currentOrder.length > 0) {
-            const currentOrder = socket.request.session[
-              deviceId
-            ].currentOrder.join(', ');
-            socket.emit(
-              'bot-message',
-              `Your current order: ${currentOrder}\n1. Place an order\n99. Checkout order\n98. Order history\n97. Current order\n0. Cancel order`
-            );
-          } else {
-            socket.emit(
-              'bot-message',
-              `You don't have any items in your current order yet. Type '1' to see the menu.`
-            );
-          }
+          // } else {
+          //   socket.emit(
+          //     'bot-message',
+          //     `You don't have any items in your current order yet. Type '1' to see the menu.`
+          //   );
+          // }
           break;
         case '99':
           // Checkout the order

@@ -34,6 +34,7 @@ module.exports = (io) => {
 
   // Get the unique identifier for the user's device
   const deviceId = socket.handshake.headers['user-agent'];
+  console.log(deviceId);
 
   // Check if the user already has an existing session
   if (
