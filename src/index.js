@@ -111,7 +111,7 @@ io.on('connection', (socket) => {
       socket.request.session[deviceId].userName = userName;
       socket.emit(
         'bot-message',
-        `Heyy ${userName}, I'm delighted to have you here... Welcome to KoboFxBot Median Rate! Do input the '1' button to explore the available median street buy rate as of June 14, 2023 at 12:03pm.`
+        `Heyy ${userName}, I'm delighted to have you here... Welcome to KoboFxBot Median Rate! Do input '1' in the field below to explore the available median street buy rate as of June 14, 2023 at 12:03pm.`
       );
     } else {
       switch (message) {
