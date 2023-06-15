@@ -80,7 +80,7 @@ io.on('connection', (socket) => {
   if (!socket.request.session[deviceId].userName) {
     socket.emit(
       'bot-message',
-      "Hello There! I'm Brian, a KoboFx-Bot, May I know your first name?"
+      "Hello There! I'm Excellent, a KoboFx-Bot, May I know your first name?"
     );
   } else {
     socket.emit(
@@ -111,7 +111,7 @@ io.on('connection', (socket) => {
       socket.request.session[deviceId].userName = userName;
       socket.emit(
         'bot-message',
-        `Heyy ${userName}, I'm delighted to have you here... Welcome to KoboFxBot Median Rate! Do input '1' in the field below to explore the available median street buy rate as of June 14, 2023 at 12:03pm.`
+        `Heyy ${userName}, I'm delighted to have you here... Welcome to KoboFxBot Median Rate! Below are available median street buy rates as of June 15, 2023 at 12:03pm. \n1. USD 🇺🇸 -->  ₦754.00 \n2. USA 🇺🇸 --> ₦759.00 \n3. CAD 🇨🇦 --> ₦565.00 \n4. £, GBP 🇬🇧 --> ₦934.00.`
       );
     } else {
       switch (message) {
